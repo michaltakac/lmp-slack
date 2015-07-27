@@ -1,0 +1,49 @@
+doctype html
+html
+  head
+    title Join the #{community} community on Slack!
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/bootstrap/css/bootstrap-theme.min.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js')
+    script(src='/bootstrap/js/bootstrap.min.js')
+    link(rel='stylesheet', type='text/css', href='http://fonts.googleapis.com/css?family=Lato:300,400,900')
+    style.
+      input {
+        font-size: 24px;
+        width: 400px;
+      }
+      #headerwrap img {
+        width: 100%;
+        height: auto;
+      }
+  body
+    #headerwrap
+      .container
+      .row.centered
+        .col-md-6
+          img(src="/img/logo.jpg")#logo
+        .col-md-6.join-wrapper
+          h3 Join the 
+          h1 #{community}
+          h3 community on Slack!
+          form(method="POST", action="/invite")#join-form
+            input(type="text", name="email", placeholder="Enter your email")#slack-email
+          p Press Enter and we'll send you an invitation.
+    footer
+      .container
+        .row.centered
+          .col-md-12
+            p &copy; #{new Date().getFullYear()} 
+              a(href='http://michaltakac.com', target='_blank') Michal Takáč
+              |. Learn MeteorJS Properly is a Facebook group made by 
+              a(href='http://hromnik.com', target='_blank') Tomáš Hromník
+              |.
+    script.
+      var form = document.getElementById('join-form');
+      var email = document.getElementById('slack-email')
+      form.addEventListener('submit', function(evt) {
+        if (!email.value) {
+          evt.preventDefault();
+        }
+      });
